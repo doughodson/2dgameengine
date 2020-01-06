@@ -15,13 +15,13 @@ public:
    void Update();
    void Render();
    void Destroy();
+   static SDL_Renderer* renderer;
+   void LoadLevel(int levelNumber);
 
 private:
    bool isRunning{};
 
    SDL_Window* window{};
-   SDL_Renderer* renderer{};
-
    int ticksLastFrame{};
 };
 

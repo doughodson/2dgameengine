@@ -1,13 +1,11 @@
 
 #include "Game.h"
-#include "Constants.h"
 
+#include "Constants.h"
+#include "glm/glm.hpp"
 #include <iostream>
 
-float projectilePosX = 0.0f;
-float projectilePosY = 0.0f;
-float projectileVelX = 20.0f;
-float projectileVelY = 30.0f;
+SDL_Renderer* Game::renderer{};
 
 void Game::Initialize(int width, int height) {
    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -66,24 +64,18 @@ void Game::Update() {
    // sets the new ticks for the current frame to be used in the next pass
    ticksLastFrame = SDL_GetTicks();
 
-   projectilePosX += projectileVelX * deltaTime;
-   projectilePosY += projectileVelY * deltaTime;
+   // update my game objects
 }
 
 void Game::Render() {
+   // set the background color
    SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
+   // clear the back buffer
    SDL_RenderClear(renderer);
 
-   SDL_Rect projectile {
-      (int)projectilePosX,
-      (int)projectilePosY,
-      (int)10,
-      (int)10
-   };
+   // draw all game objects in the scene
 
-   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-   SDL_RenderFillRect(renderer, &projectile);
-
+   // swap front and back buffers
    SDL_RenderPresent(renderer);
 }
 
@@ -93,4 +85,6 @@ void Game::Destroy() {
    SDL_Quit();
 }
 
+void Game::LoadLevel(int levelNumer) {
+}
 

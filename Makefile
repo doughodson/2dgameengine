@@ -2,8 +2,7 @@ build:
 	g++ -w -std=c++14 -Wfatal-errors \
 	./src/*.cpp \
 	-o game \
-	-I"./lib/lua" \
-	-L"./lib/lua" \
+	-I"./lib" \
 	-llua5.3 \
 	-lSDL2 \
 	-lSDL2_image \
